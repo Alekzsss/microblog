@@ -1,6 +1,9 @@
-from appz import app, db
+from appz import db, create_app, cli
 from appz.models import User, Post
-from appz import cli
+
+
+app = create_app()
+cli.register(app)
 
 @app.shell_context_processor
 def make_shell_context():
