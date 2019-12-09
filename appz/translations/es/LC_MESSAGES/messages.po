@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-10-14 22:17+0300\n"
+"POT-Creation-Date: 2019-11-23 21:15+0300\n"
 "PO-Revision-Date: 2017-09-29 23:25-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -18,116 +18,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.7.0\n"
 
-#: appz/__init__.py:20
+#: appz/__init__.py:22
 msgid "Please log in to access this page."
 msgstr "Por favor ingrese para acceder a esta página."
-
-#: appz/email.py:21
-msgid "[Microblog] Reset Your Password"
-msgstr "[Microblog] Nueva Contraseña"
-
-#: appz/forms.py:8 appz/forms.py:14 appz/forms.py:31
-msgid "Username"
-msgstr "Nombre de usuario"
-
-#: appz/forms.py:9 appz/forms.py:16 appz/forms.py:54
-msgid "Password"
-msgstr "Contraseña"
-
-#: appz/forms.py:10
-msgid "Remember me"
-msgstr ""
-
-#: appz/forms.py:11
-msgid "Sign In"
-msgstr "Ingresar"
-
-#: appz/forms.py:15 appz/forms.py:50
-msgid "Email"
-msgstr "Email"
-
-#: appz/forms.py:17
-msgid "Repeat password"
-msgstr ""
-
-#: appz/forms.py:18 appz/templates/register.html:6
-msgid "Register"
-msgstr "Registrarse"
-
-#: appz/forms.py:23 appz/forms.py:43
-msgid "Please use a different username."
-msgstr "Por favor use un nombre de usuario diferente."
-
-#: appz/forms.py:28
-msgid "Please use a different email adress."
-msgstr ""
-
-#: appz/forms.py:32
-msgid "About me"
-msgstr "Acerca de mí"
-
-#: appz/forms.py:33 appz/forms.py:47
-msgid "Submit"
-msgstr "Enviar"
-
-#: appz/forms.py:46
-msgid "Say something"
-msgstr ""
-
-#: appz/forms.py:51 appz/forms.py:56
-msgid "Request Password Reset"
-msgstr "Pedir una nueva contraseña"
-
-#: appz/forms.py:55
-msgid "Repeat Password"
-msgstr "Repetir Contraseña"
-
-#: appz/routes.py:32
-msgid "Your post is now live!"
-msgstr "¡Tu artículo ha sido publicado!"
-
-#: appz/routes.py:60
-msgid "Invalid username or password"
-msgstr "Nombre de usuario o contraseña inválidos"
-
-#: appz/routes.py:84
-msgid "Congratulations, you are now a registered user!"
-msgstr "¡Felicitaciones, ya eres un usuario registrado!"
-
-#: appz/routes.py:97
-msgid "Check your email for the instructions to reset your password"
-msgstr "Busca en tu email las instrucciones para crear una nueva contraseña"
-
-#: appz/routes.py:112
-msgid "Your password has been reset."
-msgstr "Tu contraseña ha sido cambiada."
-
-#: appz/routes.py:134
-msgid "Your changes have been saved."
-msgstr "Tus cambios han sido salvados."
-
-#: appz/routes.py:146 appz/routes.py:161
-#, python-format
-msgid "User %(username)s not found."
-msgstr "El usuario %(username)s no ha sido encontrado."
-
-#: appz/routes.py:149
-msgid "You cannot follow yourself!"
-msgstr "¡No te puedes seguir a tí mismo!"
-
-#: appz/routes.py:153
-#, python-format
-msgid "You are following %(username)s!"
-msgstr "¡Ahora estás siguiendo a %(username)s!"
-
-#: appz/routes.py:164
-msgid "You cannot unfollow yourself!"
-msgstr "¡No te puedes dejar de seguir a tí mismo!"
-
-#: appz/routes.py:168
-#, python-format
-msgid "You are not following %(username)s."
-msgstr "No estás siguiendo a %(username)s."
 
 #: appz/translate.py:20
 msgid "Error: the translation service is not configured."
@@ -137,24 +30,143 @@ msgstr ""
 msgid "Error: the translation service failed."
 msgstr ""
 
-#: appz/templates/404.html:4
-msgid "File not found"
+#: appz/auth/email.py:8
+msgid "[Microblog] Reset Your Password"
+msgstr "[Microblog] Nueva Contraseña"
+
+#: appz/auth/forms.py:8 appz/auth/forms.py:14 appz/main/forms.py:9
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: appz/auth/forms.py:9 appz/auth/forms.py:16 appz/auth/forms.py:35
+msgid "Password"
+msgstr "Contraseña"
+
+#: appz/auth/forms.py:10
+msgid "Remember me"
 msgstr ""
 
-#: appz/templates/500.html:4
-msgid "An unexpected error has occurred"
-msgstr "Ha ocurrido un error inesperado"
+#: appz/auth/forms.py:11
+msgid "Sign In"
+msgstr "Ingresar"
 
-#: appz/templates/500.html:5
-msgid "The administrator has been notified. Sorry for the inconvenience!"
-msgstr "El administrador ha sido notificado. ¡Lamentamos la inconveniencia!"
+#: appz/auth/forms.py:15 appz/auth/forms.py:31
+msgid "Email"
+msgstr "Email"
 
-#: appz/templates/_post.html:14
+#: appz/auth/forms.py:17
+msgid "Repeat password"
+msgstr ""
+
+#: appz/auth/forms.py:18 appz/templates/auth/register.html:6
+msgid "Register"
+msgstr "Registrarse"
+
+#: appz/auth/forms.py:23 appz/main/forms.py:21
+msgid "Please use a different username."
+msgstr "Por favor use un nombre de usuario diferente."
+
+#: appz/auth/forms.py:28
+msgid "Please use a different email adress."
+msgstr ""
+
+#: appz/auth/forms.py:32 appz/auth/forms.py:37
+msgid "Request Password Reset"
+msgstr "Pedir una nueva contraseña"
+
+#: appz/auth/forms.py:36
+msgid "Repeat Password"
+msgstr "Repetir Contraseña"
+
+#: appz/auth/routes.py:19
+msgid "Invalid username or password"
+msgstr "Nombre de usuario o contraseña inválidos"
+
+#: appz/auth/routes.py:43
+msgid "Congratulations, you are now a registered user!"
+msgstr "¡Felicitaciones, ya eres un usuario registrado!"
+
+#: appz/auth/routes.py:56
+msgid "Check your email for the instructions to reset your password"
+msgstr "Busca en tu email las instrucciones para crear una nueva contraseña"
+
+#: appz/auth/routes.py:71
+msgid "Your password has been reset."
+msgstr "Tu contraseña ha sido cambiada."
+
+#: appz/main/forms.py:10
+msgid "About me"
+msgstr "Acerca de mí"
+
+#: appz/main/forms.py:11 appz/main/forms.py:25 appz/main/forms.py:39
+msgid "Submit"
+msgstr "Enviar"
+
+#: appz/main/forms.py:24
+msgid "Say something"
+msgstr ""
+
+#: appz/main/forms.py:28 appz/main/routes.py:125
+msgid "Search"
+msgstr ""
+
+#: appz/main/forms.py:38
+msgid "Message"
+msgstr ""
+
+#: appz/main/routes.py:32
+msgid "Your post is now live!"
+msgstr "¡Tu artículo ha sido publicado!"
+
+#: appz/main/routes.py:70
+msgid "Your changes have been saved."
+msgstr "Tus cambios han sido salvados."
+
+#: appz/main/routes.py:82 appz/main/routes.py:97
+#, python-format
+msgid "User %(username)s not found."
+msgstr "El usuario %(username)s no ha sido encontrado."
+
+#: appz/main/routes.py:85
+msgid "You cannot follow yourself!"
+msgstr "¡No te puedes seguir a tí mismo!"
+
+#: appz/main/routes.py:89
+#, python-format
+msgid "You are following %(username)s!"
+msgstr "¡Ahora estás siguiendo a %(username)s!"
+
+#: appz/main/routes.py:100
+msgid "You cannot unfollow yourself!"
+msgstr "¡No te puedes dejar de seguir a tí mismo!"
+
+#: appz/main/routes.py:104
+#, python-format
+msgid "You are not following %(username)s."
+msgstr "No estás siguiendo a %(username)s."
+
+#: appz/main/routes.py:143
+msgid "Your message has been sent."
+msgstr ""
+
+#: appz/main/routes.py:145
+msgid "Send Message"
+msgstr ""
+
+#: appz/main/routes.py:175
+msgid "An export task is currently in progress"
+msgstr ""
+
+#: appz/main/routes.py:177
+msgid "Exporting posts..."
+msgstr ""
+
+#: appz/templates/_post.html:16
 #, python-format
 msgid "%(username)s said %(when)s"
 msgstr ""
 
-#: appz/templates/_post.html:25
+#: appz/templates/_post.html:27
 msgid "Translate"
 msgstr ""
 
@@ -166,23 +178,27 @@ msgstr "Bienvenido a Microblog"
 msgid "Error: Could not contact server."
 msgstr ""
 
-#: appz/templates/base.html:43
+#: appz/templates/base.html:115
 msgid "Home"
 msgstr "Inicio"
 
-#: appz/templates/base.html:44
+#: appz/templates/base.html:116
 msgid "Explore"
 msgstr "Explorar"
 
-#: appz/templates/base.html:48
+#: appz/templates/base.html:127
 msgid "Login"
 msgstr "Ingresar"
 
-#: appz/templates/base.html:50
+#: appz/templates/base.html:131 appz/templates/messages.html:4
+msgid "Messages"
+msgstr ""
+
+#: appz/templates/base.html:140
 msgid "Profile"
 msgstr "Perfil"
 
-#: appz/templates/base.html:51
+#: appz/templates/base.html:141
 msgid "Logout"
 msgstr "Salir"
 
@@ -195,56 +211,53 @@ msgstr ""
 msgid "Hi, %(username)s!"
 msgstr "¡Hola, %(username)s!"
 
-#: appz/templates/index.html:17 appz/templates/user.html:32
+#: appz/templates/index.html:17 appz/templates/user.html:42
 msgid "Newer posts"
 msgstr "Artículos siguientes"
 
-#: appz/templates/index.html:22 appz/templates/user.html:37
+#: appz/templates/index.html:22 appz/templates/user.html:47
 msgid "Older posts"
 msgstr "Artículos previos"
 
-#: appz/templates/login.html:5
-msgid "Sign in"
+#: appz/templates/messages.html:12
+msgid "Newer messages"
 msgstr ""
 
-#: appz/templates/login.html:12
-msgid "New User?"
-msgstr "¿Usuario Nuevo?"
-
-#: appz/templates/login.html:12
-msgid "Click to register!"
+#: appz/templates/messages.html:17
+msgid "Older messages"
 msgstr ""
 
-#: appz/templates/login.html:14
-msgid "Forgot your password?"
+#: appz/templates/search.html:4
+msgid "Search Results"
 msgstr ""
 
-#: appz/templates/login.html:15
-msgid "Click to reset It"
+#: appz/templates/search.html:13
+msgid "Previous results"
 msgstr ""
 
-#: appz/templates/reset_password.html:5
-msgid "Reset Your Password"
-msgstr "Nueva Contraseña"
+#: appz/templates/search.html:18
+msgid "Next results"
+msgstr ""
 
-#: appz/templates/reset_password_request.html:5
-msgid "Reset Password"
-msgstr "Nueva Contraseña"
+#: appz/templates/send_message.html:5
+#, python-format
+msgid "Send message to %(recipient)s"
+msgstr ""
 
 #: appz/templates/user.html:8
 msgid "User"
 msgstr "Usuario"
 
-#: appz/templates/user.html:11
+#: appz/templates/user.html:11 appz/templates/user_popup.html:13
 msgid "Last seen on"
 msgstr "Última visita"
 
-#: appz/templates/user.html:13
+#: appz/templates/user.html:13 appz/templates/user_popup.html:16
 #, python-format
 msgid "%(count)d followers"
 msgstr "%(count)d seguidores"
 
-#: appz/templates/user.html:14
+#: appz/templates/user.html:14 appz/templates/user_popup.html:17
 #, python-format
 msgid "%(count)d following"
 msgstr "siguiendo a %(count)d"
@@ -252,6 +265,62 @@ msgstr "siguiendo a %(count)d"
 #: appz/templates/user.html:16
 msgid "Edit your profile"
 msgstr "Editar tu perfil"
+
+#: appz/templates/user.html:18
+msgid "Export your posts"
+msgstr ""
+
+#: appz/templates/user.html:28
+msgid "Send private message"
+msgstr ""
+
+#: appz/templates/user_popup.html:21
+msgid "Follow"
+msgstr ""
+
+#: appz/templates/user_popup.html:25
+msgid "Unfollow"
+msgstr ""
+
+#: appz/templates/auth/login.html:5
+msgid "Sign in"
+msgstr ""
+
+#: appz/templates/auth/login.html:12
+msgid "New User?"
+msgstr "¿Usuario Nuevo?"
+
+#: appz/templates/auth/login.html:12
+msgid "Click to register!"
+msgstr ""
+
+#: appz/templates/auth/login.html:14
+msgid "Forgot your password?"
+msgstr ""
+
+#: appz/templates/auth/login.html:15
+msgid "Click to reset It"
+msgstr ""
+
+#: appz/templates/auth/reset_password.html:5
+msgid "Reset Your Password"
+msgstr "Nueva Contraseña"
+
+#: appz/templates/auth/reset_password_request.html:5
+msgid "Reset Password"
+msgstr "Nueva Contraseña"
+
+#: appz/templates/errors/404.html:4
+msgid "File not found"
+msgstr ""
+
+#: appz/templates/errors/500.html:4
+msgid "An unexpected error has occurred"
+msgstr "Ha ocurrido un error inesperado"
+
+#: appz/templates/errors/500.html:5
+msgid "The administrator has been notified. Sorry for the inconvenience!"
+msgstr "El administrador ha sido notificado. ¡Lamentamos la inconveniencia!"
 
 #~ msgid "Remember Me"
 #~ msgstr "Recordarme"

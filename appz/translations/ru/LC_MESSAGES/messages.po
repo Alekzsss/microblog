@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-10-14 22:17+0300\n"
-"PO-Revision-Date: 2019-10-14 22:29+0300\n"
+"POT-Creation-Date: 2019-11-23 21:15+0300\n"
+"PO-Revision-Date: 2019-11-23 21:18+0300\n"
 "Last-Translator: \n"
 "Language: ru\n"
 "Language-Team: ru <LL@li.org>\n"
@@ -19,116 +19,9 @@ msgstr ""
 "Generated-By: Babel 2.7.0\n"
 "X-Generator: Poedit 2.2.4\n"
 
-#: appz/__init__.py:20
+#: appz/__init__.py:22
 msgid "Please log in to access this page."
 msgstr "Пожалуйста, войдите в систему, чтобы получить доступ к этой странице."
-
-#: appz/email.py:21
-msgid "[Microblog] Reset Your Password"
-msgstr "(Микроблог) Сбросить пароль"
-
-#: appz/forms.py:8 appz/forms.py:14 appz/forms.py:31
-msgid "Username"
-msgstr "Имя пользователя"
-
-#: appz/forms.py:9 appz/forms.py:16 appz/forms.py:54
-msgid "Password"
-msgstr "Пароль"
-
-#: appz/forms.py:10
-msgid "Remember me"
-msgstr "Запомнить меня"
-
-#: appz/forms.py:11
-msgid "Sign In"
-msgstr "Войти"
-
-#: appz/forms.py:15 appz/forms.py:50
-msgid "Email"
-msgstr "Электронная почта"
-
-#: appz/forms.py:17
-msgid "Repeat password"
-msgstr "Повторите пароль"
-
-#: appz/forms.py:18 appz/templates/register.html:6
-msgid "Register"
-msgstr "Регистрация"
-
-#: appz/forms.py:23 appz/forms.py:43
-msgid "Please use a different username."
-msgstr "Пожалуйста, используйте другое имя пользователя."
-
-#: appz/forms.py:28
-msgid "Please use a different email adress."
-msgstr "Пожалуйста, выберите другой адрес электронной почты."
-
-#: appz/forms.py:32
-msgid "About me"
-msgstr "Обо мне"
-
-#: appz/forms.py:33 appz/forms.py:47
-msgid "Submit"
-msgstr "Отправить"
-
-#: appz/forms.py:46
-msgid "Say something"
-msgstr "Напишите что-нибудь"
-
-#: appz/forms.py:51 appz/forms.py:56
-msgid "Request Password Reset"
-msgstr "Запрос Сброса Пароля"
-
-#: appz/forms.py:55
-msgid "Repeat Password"
-msgstr "Повторите Пароль"
-
-#: appz/routes.py:32
-msgid "Your post is now live!"
-msgstr "Ваш пост теперь в прямом эфире!"
-
-#: appz/routes.py:60
-msgid "Invalid username or password"
-msgstr "Неверное имя пользователя или пароль"
-
-#: appz/routes.py:84
-msgid "Congratulations, you are now a registered user!"
-msgstr "Поздравляем, вы теперь зарегистрированный пользователь!"
-
-#: appz/routes.py:97
-msgid "Check your email for the instructions to reset your password"
-msgstr "Проверьте свою электронную почту для получения инструкций по сбросу пароля"
-
-#: appz/routes.py:112
-msgid "Your password has been reset."
-msgstr "Ваш пароль был сброшен."
-
-#: appz/routes.py:134
-msgid "Your changes have been saved."
-msgstr "Ваши изменения были сохранены."
-
-#: appz/routes.py:146 appz/routes.py:161
-#, python-format
-msgid "User %(username)s not found."
-msgstr "Пользователь %(username)s не найден."
-
-#: appz/routes.py:149
-msgid "You cannot follow yourself!"
-msgstr "Вы не можете подписаться на себя!"
-
-#: appz/routes.py:153
-#, python-format
-msgid "You are following %(username)s!"
-msgstr "Вы подписались на %(username)s!"
-
-#: appz/routes.py:164
-msgid "You cannot unfollow yourself!"
-msgstr "Вы не можете отписаться от себя!"
-
-#: appz/routes.py:168
-#, python-format
-msgid "You are not following %(username)s."
-msgstr "Вы не подписаны на %(username)s."
 
 #: appz/translate.py:20
 msgid "Error: the translation service is not configured."
@@ -138,24 +31,143 @@ msgstr "Ошибка: служба перевода не настроена."
 msgid "Error: the translation service failed."
 msgstr "Ошибка: служба перевода не сработала."
 
-#: appz/templates/404.html:4
-msgid "File not found"
-msgstr "Файл не найден"
+#: appz/auth/email.py:8
+msgid "[Microblog] Reset Your Password"
+msgstr "(Микроблог) Сбросить пароль"
 
-#: appz/templates/500.html:4
-msgid "An unexpected error has occurred"
-msgstr "Произошла непредвиденная ошибка"
+#: appz/auth/forms.py:8 appz/auth/forms.py:14 appz/main/forms.py:9
+msgid "Username"
+msgstr "Имя пользователя"
 
-#: appz/templates/500.html:5
-msgid "The administrator has been notified. Sorry for the inconvenience!"
-msgstr "Администратор был уведомлен. Извините за доставленные неудобства!"
+#: appz/auth/forms.py:9 appz/auth/forms.py:16 appz/auth/forms.py:35
+msgid "Password"
+msgstr "Пароль"
 
-#: appz/templates/_post.html:14
+#: appz/auth/forms.py:10
+msgid "Remember me"
+msgstr "Запомнить меня"
+
+#: appz/auth/forms.py:11
+msgid "Sign In"
+msgstr "Войти"
+
+#: appz/auth/forms.py:15 appz/auth/forms.py:31
+msgid "Email"
+msgstr "Электронная почта"
+
+#: appz/auth/forms.py:17
+msgid "Repeat password"
+msgstr "Повторите пароль"
+
+#: appz/auth/forms.py:18 appz/templates/auth/register.html:6
+msgid "Register"
+msgstr "Регистрация"
+
+#: appz/auth/forms.py:23 appz/main/forms.py:21
+msgid "Please use a different username."
+msgstr "Пожалуйста, используйте другое имя пользователя."
+
+#: appz/auth/forms.py:28
+msgid "Please use a different email adress."
+msgstr "Пожалуйста, выберите другой адрес электронной почты."
+
+#: appz/auth/forms.py:32 appz/auth/forms.py:37
+msgid "Request Password Reset"
+msgstr "Запрос Сброса Пароля"
+
+#: appz/auth/forms.py:36
+msgid "Repeat Password"
+msgstr "Повторите Пароль"
+
+#: appz/auth/routes.py:19
+msgid "Invalid username or password"
+msgstr "Неверное имя пользователя или пароль"
+
+#: appz/auth/routes.py:43
+msgid "Congratulations, you are now a registered user!"
+msgstr "Поздравляем, вы теперь зарегистрированный пользователь!"
+
+#: appz/auth/routes.py:56
+msgid "Check your email for the instructions to reset your password"
+msgstr "Проверьте свою электронную почту для получения инструкций по сбросу пароля"
+
+#: appz/auth/routes.py:71
+msgid "Your password has been reset."
+msgstr "Ваш пароль был сброшен."
+
+#: appz/main/forms.py:10
+msgid "About me"
+msgstr "Обо мне"
+
+#: appz/main/forms.py:11 appz/main/forms.py:25 appz/main/forms.py:39
+msgid "Submit"
+msgstr "Сохранить"
+
+#: appz/main/forms.py:24
+msgid "Say something"
+msgstr "Напишите что-нибудь"
+
+#: appz/main/forms.py:28 appz/main/routes.py:125
+msgid "Search"
+msgstr "Поиск"
+
+#: appz/main/forms.py:38
+msgid "Message"
+msgstr "Сообщение"
+
+#: appz/main/routes.py:32
+msgid "Your post is now live!"
+msgstr "Ваш пост теперь в прямом эфире!"
+
+#: appz/main/routes.py:70
+msgid "Your changes have been saved."
+msgstr "Ваши изменения были сохранены."
+
+#: appz/main/routes.py:82 appz/main/routes.py:97
+#, python-format
+msgid "User %(username)s not found."
+msgstr "Пользователь %(username)s не найден."
+
+#: appz/main/routes.py:85
+msgid "You cannot follow yourself!"
+msgstr "Вы не можете подписаться на себя!"
+
+#: appz/main/routes.py:89
+#, python-format
+msgid "You are following %(username)s!"
+msgstr "Вы подписались на %(username)s!"
+
+#: appz/main/routes.py:100
+msgid "You cannot unfollow yourself!"
+msgstr "Вы не можете отписаться от себя!"
+
+#: appz/main/routes.py:104
+#, python-format
+msgid "You are not following %(username)s."
+msgstr "Вы не подписаны на %(username)s."
+
+#: appz/main/routes.py:143
+msgid "Your message has been sent."
+msgstr "Ваше сообщение отправлено."
+
+#: appz/main/routes.py:145
+msgid "Send Message"
+msgstr "Отправить сообщение"
+
+#: appz/main/routes.py:175
+msgid "An export task is currently in progress"
+msgstr "В настоящее время выполняется экспортировка"
+
+#: appz/main/routes.py:177
+msgid "Exporting posts..."
+msgstr "Экспорт сообщений..."
+
+#: appz/templates/_post.html:16
 #, python-format
 msgid "%(username)s said %(when)s"
 msgstr "%(username)s сказал %(when)s"
 
-#: appz/templates/_post.html:25
+#: appz/templates/_post.html:27
 msgid "Translate"
 msgstr "Перевести"
 
@@ -167,23 +179,27 @@ msgstr "Добро пожаловать в микроблог"
 msgid "Error: Could not contact server."
 msgstr "Ошибка: Не удалось связаться с сервером."
 
-#: appz/templates/base.html:43
+#: appz/templates/base.html:115
 msgid "Home"
 msgstr "Главная"
 
-#: appz/templates/base.html:44
+#: appz/templates/base.html:116
 msgid "Explore"
 msgstr "Чат"
 
-#: appz/templates/base.html:48
+#: appz/templates/base.html:127
 msgid "Login"
 msgstr "Логин"
 
-#: appz/templates/base.html:50
+#: appz/templates/base.html:131 appz/templates/messages.html:4
+msgid "Messages"
+msgstr "Сообщения"
+
+#: appz/templates/base.html:140
 msgid "Profile"
 msgstr "Профиль"
 
-#: appz/templates/base.html:51
+#: appz/templates/base.html:141
 msgid "Logout"
 msgstr "Выйти"
 
@@ -196,56 +212,53 @@ msgstr "Редактировать профиль"
 msgid "Hi, %(username)s!"
 msgstr "Привет, %(username)s!"
 
-#: appz/templates/index.html:17 appz/templates/user.html:32
+#: appz/templates/index.html:17 appz/templates/user.html:42
 msgid "Newer posts"
 msgstr "Новые посты"
 
-#: appz/templates/index.html:22 appz/templates/user.html:37
+#: appz/templates/index.html:22 appz/templates/user.html:47
 msgid "Older posts"
 msgstr "Старые посты"
 
-#: appz/templates/login.html:5
-msgid "Sign in"
-msgstr "Войти"
+#: appz/templates/messages.html:12
+msgid "Newer messages"
+msgstr "Новые сообщения"
 
-#: appz/templates/login.html:12
-msgid "New User?"
-msgstr "Новый пользователь?"
+#: appz/templates/messages.html:17
+msgid "Older messages"
+msgstr "Старые сообщения"
 
-#: appz/templates/login.html:12
-msgid "Click to register!"
-msgstr "Кликни для регистрации!"
+#: appz/templates/search.html:4
+msgid "Search Results"
+msgstr "Результаты поиска"
 
-#: appz/templates/login.html:14
-msgid "Forgot your password?"
-msgstr "Забыл свой пароль?"
+#: appz/templates/search.html:13
+msgid "Previous results"
+msgstr "Предыдущие результаты"
 
-#: appz/templates/login.html:15
-msgid "Click to reset It"
-msgstr "Кликни чтобы сбросить пароль"
+#: appz/templates/search.html:18
+msgid "Next results"
+msgstr "Следующие результаты"
 
-#: appz/templates/reset_password.html:5
-msgid "Reset Your Password"
-msgstr "Сбросьте свой пароль"
-
-#: appz/templates/reset_password_request.html:5
-msgid "Reset Password"
-msgstr "Сбросить пароль"
+#: appz/templates/send_message.html:5
+#, python-format
+msgid "Send message to %(recipient)s"
+msgstr "Отправить сообщение %(recipient)s"
 
 #: appz/templates/user.html:8
 msgid "User"
 msgstr "Пользователь"
 
-#: appz/templates/user.html:11
+#: appz/templates/user.html:11 appz/templates/user_popup.html:13
 msgid "Last seen on"
 msgstr "Последний раз заходил"
 
-#: appz/templates/user.html:13
+#: appz/templates/user.html:13 appz/templates/user_popup.html:16
 #, python-format
 msgid "%(count)d followers"
 msgstr "%(count)d подписавшихся"
 
-#: appz/templates/user.html:14
+#: appz/templates/user.html:14 appz/templates/user_popup.html:17
 #, python-format
 msgid "%(count)d following"
 msgstr "%(count)d подписан"
@@ -253,6 +266,62 @@ msgstr "%(count)d подписан"
 #: appz/templates/user.html:16
 msgid "Edit your profile"
 msgstr "Редактировать свой профиль"
+
+#: appz/templates/user.html:18
+msgid "Export your posts"
+msgstr "Экспортировать свои сообщения"
+
+#: appz/templates/user.html:28
+msgid "Send private message"
+msgstr "Отправить личное сообщение"
+
+#: appz/templates/user_popup.html:21
+msgid "Follow"
+msgstr "Подписаться на"
+
+#: appz/templates/user_popup.html:25
+msgid "Unfollow"
+msgstr "Отписаться"
+
+#: appz/templates/auth/login.html:5
+msgid "Sign in"
+msgstr "Войти"
+
+#: appz/templates/auth/login.html:12
+msgid "New User?"
+msgstr "Новый пользователь?"
+
+#: appz/templates/auth/login.html:12
+msgid "Click to register!"
+msgstr "Кликни для регистрации!"
+
+#: appz/templates/auth/login.html:14
+msgid "Forgot your password?"
+msgstr "Забыл свой пароль?"
+
+#: appz/templates/auth/login.html:15
+msgid "Click to reset It"
+msgstr "Кликни чтобы сбросить пароль"
+
+#: appz/templates/auth/reset_password.html:5
+msgid "Reset Your Password"
+msgstr "Сбросьте свой пароль"
+
+#: appz/templates/auth/reset_password_request.html:5
+msgid "Reset Password"
+msgstr "Сбросить пароль"
+
+#: appz/templates/errors/404.html:4
+msgid "File not found"
+msgstr "Файл не найден"
+
+#: appz/templates/errors/500.html:4
+msgid "An unexpected error has occurred"
+msgstr "Произошла непредвиденная ошибка"
+
+#: appz/templates/errors/500.html:5
+msgid "The administrator has been notified. Sorry for the inconvenience!"
+msgstr "Администратор был уведомлен. Извините за доставленные неудобства!"
 
 #~ msgid "%(username)s said %(when)s"
 #~ msgstr "%(username)s сказал %(when)s"
