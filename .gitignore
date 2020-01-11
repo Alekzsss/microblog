@@ -1,0 +1,13 @@
+__pycache__
+.git/
+.idea/
+.env
+*.pyc
+
+#Translations
+*.mo
+
+env/
+app.db
+microblog.log*
+

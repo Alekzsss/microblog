@@ -49,6 +49,9 @@ def create_app(config_class=Config):
     from appz.main import bp as main_bp
     app.register_blueprint(main_bp)
 
+    from appz.api import bp as api_bp
+    app.register_blueprint(api_bp, url_prefix='/api')
+
     if not app.debug and not app.testing:
         # send email with errors
         if app.config['MAIL_SERVER']:
@@ -60,14 +63,14 @@ def create_app(config_class=Config):
                 secure = ()
             mail_handler = SMTPHandler(
                 mailhost=(app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
-                fromaddr='no-reply@' + app.config['MAIL_SERVER'],
+                fromaddr='no-reply@' + app.config['MAIL_SERVER'], # fake email address here which is formed using the "no-reply" name and the email server
                 toaddrs=app.config['ADMINS'], subject='Microblog Failure',
                 credentials=auth, secure=secure)
             mail_handler.setLevel(logging.ERROR)
             app.logger.addHandler(mail_handler)
 
         # logging of programm
-        if not  os.path.exists('logs'):
+        if not os.path.exists('logs'):
             os.mkdir('logs')
         file_handler = RotatingFileHandler('logs/microblog.log', maxBytes=10240, backupCount=10)
         file_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
@@ -84,5 +87,5 @@ def get_locale():
     return request.accept_languages.best_match(current_app.config['LANGUAGES'])
     # return 'es'
 
-from appz import models
-from appz.main import routes
+# from appz import models
+# from appz.main import routes

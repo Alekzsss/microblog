@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-11-23 21:15+0300\n"
+"POT-Creation-Date: 2019-12-17 12:26+0300\n"
 "PO-Revision-Date: 2017-09-29 23:25-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -26,7 +26,7 @@ msgstr "Por favor ingrese para acceder a esta página."
 msgid "Error: the translation service is not configured."
 msgstr ""
 
-#: appz/translate.py:25
+#: appz/translate.py:26
 msgid "Error: the translation service failed."
 msgstr ""
 
@@ -166,7 +166,7 @@ msgstr ""
 msgid "%(username)s said %(when)s"
 msgstr ""
 
-#: appz/templates/_post.html:27
+#: appz/templates/_post.html:26
 msgid "Translate"
 msgstr ""
 

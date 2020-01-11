@@ -21,6 +21,7 @@ def _set_task_progress(progress):
                                                      'progress': progress})
         if progress >= 100:
             task.complete = True
+            # db.session.delete(task)
         db.session.commit()
 
 def export_posts(user_id):

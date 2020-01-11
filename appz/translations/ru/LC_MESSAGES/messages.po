@@ -7,27 +7,29 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-11-23 21:15+0300\n"
-"PO-Revision-Date: 2019-11-23 21:18+0300\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2019-12-17 13:02+0300\n"
+"PO-Revision-Date: 2019-12-17 13:21+0300\n"
 "Language: ru\n"
 "Language-Team: ru <LL@li.org>\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.7.0\n"
+"Last-Translator: \n"
 "X-Generator: Poedit 2.2.4\n"
 
 #: appz/__init__.py:22
 msgid "Please log in to access this page."
-msgstr "Пожалуйста, войдите в систему, чтобы получить доступ к этой странице."
+msgstr ""
+"Пожалуйста, войдите в систему, чтобы получить доступ к этой странице."
 
 #: appz/translate.py:20
 msgid "Error: the translation service is not configured."
 msgstr "Ошибка: служба перевода не настроена."
 
-#: appz/translate.py:25
+#: appz/translate.py:26
 msgid "Error: the translation service failed."
 msgstr "Ошибка: служба перевода не сработала."
 
@@ -89,7 +91,9 @@ msgstr "Поздравляем, вы теперь зарегистрирован
 
 #: appz/auth/routes.py:56
 msgid "Check your email for the instructions to reset your password"
-msgstr "Проверьте свою электронную почту для получения инструкций по сбросу пароля"
+msgstr ""
+"Проверьте свою электронную почту для получения инструкций по сбросу "
+"пароля"
 
 #: appz/auth/routes.py:71
 msgid "Your password has been reset."
@@ -165,9 +169,9 @@ msgstr "Экспорт сообщений..."
 #: appz/templates/_post.html:16
 #, python-format
 msgid "%(username)s said %(when)s"
-msgstr "%(username)s сказал %(when)s"
+msgstr "%(username)s написал %(when)s"
 
-#: appz/templates/_post.html:27
+#: appz/templates/_post.html:26
 msgid "Translate"
 msgstr "Перевести"
 
@@ -321,7 +325,4 @@ msgstr "Произошла непредвиденная ошибка"
 
 #: appz/templates/errors/500.html:5
 msgid "The administrator has been notified. Sorry for the inconvenience!"
-msgstr "Администратор был уведомлен. Извините за доставленные неудобства!"
-
-#~ msgid "%(username)s said %(when)s"
-#~ msgstr "%(username)s сказал %(when)s"
+msgstr "Администратор был уведомлен. Извините за неудобства!"

@@ -1,5 +1,5 @@
 from appz import db, create_app, cli
-from appz.models import User, Post, Notification, Message, Task
+from appz.models import User, Post, Notification, Message, Task, followers
 
 
 app = create_app()

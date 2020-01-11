@@ -5,6 +5,7 @@ from appz import db
 from appz.api.errors import bad_request
 from appz.api.auth import token_auth
 
+
 @bp.route('/users/<int:id>', methods=['GET'])
 @token_auth.login_required
 def get_user(id):
