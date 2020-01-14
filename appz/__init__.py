@@ -13,6 +13,7 @@ from config import Config
 from elasticsearch import Elasticsearch
 from redis import Redis
 import rq
+from flask_admin import Admin
 
 
 db = SQLAlchemy()
@@ -24,6 +25,7 @@ mail = Mail()
 bootstrap = Bootstrap()
 moment = Moment()
 babel = Babel()
+admin = Admin()
 
 def create_app(config_class=Config):
     app = Flask(__name__)
@@ -36,6 +38,7 @@ def create_app(config_class=Config):
     bootstrap.init_app(app)
     moment.init_app(app)
     babel.init_app(app)
+    admin.init_app(app)
     app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) if app.config['ELASTICSEARCH_URL'] else None
     app.redis = Redis.from_url(app.config['REDIS_URL'])
     app.task_queue = rq.Queue('microblog-tasks', connection=app.redis)
@@ -48,6 +51,9 @@ def create_app(config_class=Config):
 
     from appz.main import bp as main_bp
     app.register_blueprint(main_bp)
+
+    from appz.main import bp as admin_bp
+    app.register_blueprint(admin_bp)
 
     from appz.api import bp as api_bp
     app.register_blueprint(api_bp, url_prefix='/api')

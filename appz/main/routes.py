@@ -177,3 +177,19 @@ def export_posts():
         current_user.launch_task('export_posts', _('Exporting posts...'))
         db.session.commit()
     return redirect(url_for('main.user', username=current_user.username))
+
+# @bp.route('/<post_id>/edit', methods=['GET', 'POST'])
+# @login_required
+# def edit_post(post_id):
+#     post = Post.query.filter_by(Post.user_id==post_id).first()
+#     if request.method == 'POST':
+#         form = PostForm(formdata=request.form, obj=post)
+#         form.populate_obj(post)
+#         db.session.commit()
+#     page = request.args.get('page', 1, type=int)
+#     posts = current_user.followed_posts().paginate(page, current_app.config['POSTS_PER_PAGE'], False)
+#     next_url = url_for('main.index', page=posts.next_num) if posts.has_next else None
+#     prev_url = url_for('main.index', page=posts.prev_num) if posts.has_prev else None
+#     return render_template("index.html", title='Home',
+#                            form=form, posts=posts.items,
+#                            next_url=next_url, prev_url=prev_url)
