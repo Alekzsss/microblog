@@ -1,11 +1,10 @@
 from appz.api import bp
 from appz import db
 from flask import request, jsonify, g, url_for
-from flask_login import current_user
-from appz.models import Post, User
+from appz.models import Post
 from appz.api.auth import token_auth
 from appz.api.errors import bad_request
-from guess_language import guess_language
+from appz.main.routes import guess_lang
 
 
 @bp.route('/posts/<int:id>', methods=['GET'])
@@ -36,13 +35,10 @@ def create_post():
     if 'body' not in data:
         return bad_request('you must include post message')
     body = data.get('body')
-    language = guess_language(body)
+    language = guess_lang(body)
     if language == 'UNKNOWN' or len(language) > 5:
         language = ''
     post = Post(body=body, author=g.current_user, language=language)
     db.session.add(post)
     db.session.commit()
-    response = jsonify(post.to_dict())
-    response.status_code = 201
-    response.headers['Location'] = url_for('api.get_posts', id=post.id)
-    return response
+    return jsonify(post.to_dict()), 201, {'Location': url_for('api.get_posts', id=post.id)}

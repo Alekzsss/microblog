@@ -1,0 +1,20 @@
+{% extends 'admin/base_.html' %}
+{% block head_css %}
+{{ super() }}
+{% endblock head_css %}
+
+{% block body %}
+<div class="row">
+    <h1>Flask-Admin example</h1>
+    <p class="lead">
+        Customize the layout
+    </p>
+    <p>
+        This example shows how you can customize the look & feel of the admin interface.
+    </p>
+    <p>
+        This is done by overriding some of the built-in templates.
+    </p>
+    <a class="btn btn-primary" href="/"><i class="glyphicon glyphicon-chevron-left"></i>{{ _('To main app') }}</a>
+</div>
+{% endblock %}

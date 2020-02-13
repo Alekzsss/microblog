@@ -1,6 +1,6 @@
 from appz import db, login
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import UserMixin
+from flask_login import UserMixin, AnonymousUserMixin
 from datetime import datetime, timedelta
 from hashlib import md5
 from time import time
@@ -48,7 +48,8 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    posts = db.relationship("Post",backref="author", lazy="dynamic")
+    posts = db.relationship('Post',backref='author', lazy='dynamic')
+    role_id = db.Column(db.Integer, db.ForeignKey('role.id'))
     about_me = db.Column(db.String(140))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
     followed = db.relationship(
@@ -56,9 +57,9 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):
         primaryjoin=(followers.c.follower_id == id),
         secondaryjoin=(followers.c.followed_id == id),
         backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
-    message_sent = db.relationship('Message',
-                                   foreign_keys='Message.sender_id',
-                                   backref='author', lazy='dynamic')
+    messages_sent = db.relationship('Message',
+                                    foreign_keys='Message.sender_id',
+                                    backref='author', lazy='dynamic')
     messages_received = db.relationship('Message',
                                        foreign_keys='Message.recipient_id',
                                        backref='recipient', lazy='dynamic')
@@ -68,8 +69,27 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):
     token = db.Column(db.String(32), index=True, unique=True)
     token_expiration = db.Column(db.DateTime)
 
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        if self.role is None:
+            for email in current_app.config['ADMINS']:
+                if email == self.email:
+                    self.role = Role.query.filter_by(name='Administrator').first()
+                    # self.role = Role.query.filter_by(permissions=0xff).first()
+            if self.role is None:
+                self.role = Role.query.filter_by(default=True).first()
+
     def __repr__(self):
         return "<User {}>".format(self.username)
+
+    def can(self, perm):
+        if self.role is not None:
+            if self.role.has_permission(perm):
+                return True
+        # return self.role is not None and self.role.has_permission(perm)
+
+    def is_administrator(self):
+        return self.can(Permission.ADMIN)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -180,6 +200,109 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):
             return None
         return user
 
+class AnonymousUser(AnonymousUserMixin):
+    def can(self, permissions):
+        return False
+
+    def is_administrator(self):
+        return False
+
+login.anonymous_user = AnonymousUser
+
+class Permission:
+    FOLLOW = 1
+    COMMENT = 2
+    WRITE = 4
+    MODERATE = 8
+    ADMIN = 16
+
+class Role(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True)
+    default = db.Column(db.Boolean, default=False, index=True)
+    permissions = db.Column(db.Integer)
+    users = db.relationship('User', backref='role', lazy='dynamic')
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        if self.permissions is None:
+            self.permissions = 0
+
+    def add_permission(self, perm):
+        if not self.has_permission(perm):
+            self.permissions += perm
+
+    def remove_permission(self, perm):
+        if self.has_permission(perm):
+            self.permissions -= perm
+
+    def reset_permission(self):
+        self.permissions = 0
+
+    def has_permission(self, perm):
+        return self.permissions & perm == perm
+
+    @staticmethod
+    def insert_roles():
+        roles = {
+            'User': [Permission.FOLLOW, Permission.COMMENT, Permission.WRITE],
+            'Moderator': [Permission.FOLLOW, Permission.COMMENT, Permission.WRITE, Permission.MODERATE],
+            'Administrator': [Permission.FOLLOW, Permission.COMMENT, Permission.WRITE, Permission.MODERATE, Permission.ADMIN]
+        }
+        default_role = 'User'
+        for r in roles:
+            role = Role.query.filter_by(name=r).first()
+            if role is None:
+                role = Role(name=r)
+            role.reset_permission()
+            for perm in roles[r]:
+                role.add_permission(perm)
+            role.default = (role.name == default_role)
+            db.session.add(role)
+        db.session.commit()
+
+    def __repr__(self):
+        return '{}'.format(self.name)
+
+# class Permission:
+#     FOLLOW = 0x01
+#     COMMENT = 0x02
+#     WRITE_ARTICLES = 0x04
+#     MODERATE_COMMENTS = 0x08
+#     ADMINISTER = 0x80
+#
+# class Role(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(64), unique=True)
+#     default = db.Column(db.Boolean, default=False, index=True)
+#     permissions = db.Column(db.Integer)
+#     users = db.relationship('User', backref='role', lazy='dynamic')
+#
+#     @staticmethod
+#     def insert_roles():
+#         roles = {
+#             'User': (Permission.FOLLOW |
+#                      Permission.COMMENT |
+#                      Permission.WRITE_ARTICLES, True),
+#             'Moderator': (Permission.FOLLOW |
+#                           Permission.COMMENT |
+#                           Permission.WRITE_ARTICLES |
+#                           Permission.MODERATE_COMMENTS, False),
+#             'Administrator': (0xff, False)
+#         }
+#         for r in roles:
+#             role = Role.query.filter_by(name=r).first()
+#             if role is None:
+#                 role = Role(name=r)
+#             role.permissions = roles[r][0]
+#             role.default = roles[r][1]
+#             db.session.add(role)
+#         db.session.commit()
+#
+#     def __repr__(self):
+#         return '{}'.format(self.name)
+
+
 class SearchableMixin(object):
     @classmethod
     def search(cls, expression, page, per_page):
@@ -245,6 +368,7 @@ class Post(SearchableMixin, PaginatedAPIMixin, db.Model):
             }
         }
         return data
+
 
 class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)

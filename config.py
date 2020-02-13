@@ -31,3 +31,6 @@ class Config(object):
 
     # config for multithreading
     REDIS_URL = os.environ.get('REDIS_URL') or 'redis://'
+
+    #bootswatch
+    # FLASK_ADMIN_SWATCH = 'cerulean'

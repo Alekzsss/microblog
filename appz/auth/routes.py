@@ -6,7 +6,7 @@ from flask_login import current_user, login_user, logout_user
 from appz.models import User
 from appz.auth.email import send_password_reset_email
 from werkzeug.urls import url_parse
-from flask_babel import _
+from flask_babelex import _
 
 @bp.route("/login", methods=["GET", "POST"])
 def login():

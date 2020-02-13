@@ -6,6 +6,12 @@ from appz.api.errors import error_response as api_error_response
 def wants_json_response():
     return request.accept_mimetypes['application/json'] >= request.accept_mimetypes['text/html']
 
+@bp.app_errorhandler(403)
+def not_found_error(error):
+    if wants_json_response():
+        return api_error_response(403)
+    return render_template('errors/403.html'), 403
+
 @bp.app_errorhandler(404)
 def not_found_error(error):
     if wants_json_response():

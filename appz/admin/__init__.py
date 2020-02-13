@@ -1,0 +1,1 @@
+from appz.admin.views import MyAdminIndexView, init_admin

@@ -8,11 +8,25 @@ import os
 from flask_mail import Mail
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
-from flask_babel import Babel, lazy_gettext as _l
 from config import Config
 from elasticsearch import Elasticsearch
 from redis import Redis
 import rq
+from flask_admin import Admin
+from flask_babelex import Babel, lazy_gettext as _l
+
+
+# workaround for babelex
+from flask._compat import text_type
+from flask.json import JSONEncoder as BaseEncoder
+from speaklater import _LazyString
+
+class JSONEncoder(BaseEncoder):
+    def default(self, o):
+        if isinstance(o, _LazyString):
+            return text_type(o)
+        return BaseEncoder.default(self, o)
+
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -24,10 +38,11 @@ bootstrap = Bootstrap()
 moment = Moment()
 babel = Babel()
 
+from appz.admin import MyAdminIndexView
+
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
-
     db.init_app(app)
     migrate.init_app(app, db)
     login.init_app(app)
@@ -35,9 +50,13 @@ def create_app(config_class=Config):
     bootstrap.init_app(app)
     moment.init_app(app)
     babel.init_app(app)
+    admin = Admin(app, 'Microblog', url='/', index_view=MyAdminIndexView(menu_icon_type='glyph', menu_icon_value='glyphicon-home'), template_mode='bootstrap3', category_icon_classes='glyph')
     app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) if app.config['ELASTICSEARCH_URL'] else None
     app.redis = Redis.from_url(app.config['REDIS_URL'])
     app.task_queue = rq.Queue('microblog-tasks', connection=app.redis)
+    # workaround for flask-babelex
+    app.json_encoder = JSONEncoder
+
 
     from appz.errors import bp as errors_bp
     app.register_blueprint(errors_bp)
@@ -50,6 +69,9 @@ def create_app(config_class=Config):
 
     from appz.api import bp as api_bp
     app.register_blueprint(api_bp, url_prefix='/api')
+
+    from appz.admin import init_admin
+    init_admin(admin)
 
     if not app.debug and not app.testing:
         # send email with errors
@@ -83,5 +105,5 @@ def create_app(config_class=Config):
 
 @babel.localeselector
 def get_locale():
-    return request.accept_languages.best_match(current_app.config['LANGUAGES'])
     # return 'es'
+    return request.accept_languages.best_match(current_app.config['LANGUAGES'])
